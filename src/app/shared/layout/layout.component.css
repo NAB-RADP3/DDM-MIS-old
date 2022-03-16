@@ -8,7 +8,16 @@
 
 .navbar-brand {
   text-decoration: none;
-  color: white;
+  color: rgb(0, 0, 0);
+  height: 64px; /* the height of the toolbar is 64  */
+  width: 64px;
+}
+
+.navbar-brand svg,
+.navbar-brand image {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .navbar-container {
@@ -44,7 +53,7 @@
 mat-sidenav {
   min-width: 180px !important;
   border-right: 1px solid #eee;
-  box-shadow: 6px 0 6px rgba(0, 0, 0, .1);
+  box-shadow: 6px 0 6px rgba(0, 0, 0, 0.1);
   /* background-color:rgb(63, 81, 181); */
 }
 
@@ -55,7 +64,7 @@ mat-sidenav {
 }
 
 a.mat-list-item.active {
-  background: rgba(0, 0, 0, .04);
+  background: rgba(0, 0, 0, 0.04);
 }
 
 #push-bottom {
