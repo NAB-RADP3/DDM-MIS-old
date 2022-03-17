@@ -55,38 +55,55 @@
       [mode]="mobileQuery.matches ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56"
-      class="sidenav"
+      class="sidenav mat-elevation-z2"
     >
       <mat-nav-list>
-        <h3 mat-subheader>Home</h3>
 
-        <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="active">
-          <mat-icon mat-list-icon> dashboard </mat-icon>
-          <mat-divider></mat-divider>
-          <p mat-line>Dashboard</p>
-        </a>
-
-        <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="active">
-          <mat-icon mat-list-icon> article </mat-icon>
-          <mat-divider></mat-divider>
-          <p mat-line>MIS 1</p>
-        </a>
-
-        <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="active">
-          <mat-icon mat-list-icon> article </mat-icon>
-          <mat-divider></mat-divider>
-          <p mat-line>MIS 2</p>
-        </a>
-
-        <a
-          id="push-bottom"
-          mat-list-item
-          [routerLink]="['/about']"
-          routerLinkActive="active"
-        >
-          <mat-icon mat-list-icon> info_outline </mat-icon>
-          <p mat-line>Copyright @ NABARD 2022</p>
-        </a>
+        <div class="h100" fxLayout="column" fxLayoutAlign="space-between stretch">
+          <div>
+            <h3 mat-subheader>Home</h3>
+            <a
+              mat-list-item
+              [routerLink]="['/dashboard']"
+              routerLinkActive="active"
+            >
+              <mat-icon mat-list-icon color="primary"> dashboard </mat-icon>
+              <mat-divider></mat-divider>
+              <p mat-line>Dashboard</p>
+            </a>
+    
+            <a
+              mat-list-item
+              [routerLink]="['/dashboard']"
+              routerLinkActive="active"
+            >
+              <mat-icon mat-list-icon color="primary"> article </mat-icon>
+              <mat-divider></mat-divider>
+              <p mat-line>MIS 1</p>
+            </a>
+    
+            <a
+              mat-list-item
+              [routerLink]="['/dashboard']"
+              routerLinkActive="active"
+            >
+              <mat-icon mat-list-icon color="primary"> article </mat-icon>
+              <mat-divider></mat-divider>
+              <p mat-line>MIS 2</p>
+            </a>
+          </div>
+  
+  
+          <a
+            id="push-bottom"
+            mat-list-item
+            [routerLink]="['/about']"
+            routerLinkActive="active"
+          >
+            <!-- <mat-icon mat-list-icon color="primary"> info_outline </mat-icon> -->
+            <P mat-line>Copyright @ NABARD 2022</P>
+          </a>
+        </div>
       </mat-nav-list>
     </mat-sidenav>
 
