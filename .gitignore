@@ -332,3 +332,6 @@ ASALocalRun/
 
 # Angular cache Folder
 .angular/
+
+# Ignore Fake DB Configuration
+db.json
