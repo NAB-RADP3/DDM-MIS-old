@@ -3,8 +3,14 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { timer } from 'rxjs';
 import { Subscription } from 'rxjs';
 
- import { AuthenticationService } from './../../core/services/auth.service';
+import { AuthenticationService } from './../../core/services/auth.service';
 import { SpinnerService } from '../../core/services/spinner.service';
+import { Mis1StatusResponse } from 'src/app/core/models/mis1-status-response';
+
+// Services to get the API Calls
+import { ApiConsumerServicesService } from "src/app/core/services/api-consumer-services.service";
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
     selector: 'app-layout',
@@ -19,17 +25,21 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     userName: string = "";
     isAdmin: boolean = false;
 
+    private mis1statres!: Mis1StatusResponse;
+    
     private autoLogoutSubscription: Subscription = new Subscription;
 
     constructor(private changeDetectorRef: ChangeDetectorRef,
         private media: MediaMatcher,
         public spinnerService: SpinnerService,
-        private authService: AuthenticationService) {
+        private authService: AuthenticationService,
+        private apiService: ApiConsumerServicesService) {
 
         this.mobileQuery = this.media.matchMedia('(max-width: 1000px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
         // tslint:disable-next-line: deprecation
         this.mobileQuery.addListener(this._mobileQueryListener);
+
 
     }
 
@@ -38,6 +48,17 @@ export class LayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
         this.isAdmin = user.isAdmin;
         this.userName = user.fullName;
+
+        this.apiService.get_Mis1_Last_Mon_Status().subscribe(
+            (response: any) =>
+            {
+                this.mis1statres = response;
+            },
+            (error: HttpErrorResponse) =>
+            {
+                alert(error.message);
+            }
+        );
 
         // Auto log-out subscription
         // const timer$ = timer(2000, 5000);
