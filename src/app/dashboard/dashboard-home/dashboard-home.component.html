@@ -1,18 +1,57 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center none">
-
   <div fxFlex="95%">
-    <div class="container" fxLayout="row" fxLayoutAlign="center none">
-
-      <h2>Welcome back, {{currentUser.fullName}}!</h2>
-
+    <div>
+      <h4>Past Submitted status</h4>
+      <!-- <h4>Selected Period:</h4> -->
     </div>
 
-    <div class="container" fxLayout="row" fxLayoutAlign="center none">
-      <div fxFlex="50%" class="text-center no-records animate">
-        <mat-icon>dashboard</mat-icon>
-        <p>This is the dashboard.</p>
-      </div>
-      <mat-icon> </mat-icon>
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+        </ng-container>
+
+        <!-- return Column -->
+        <ng-container matColumnDef="return">
+          <th mat-header-cell *matHeaderCellDef>Return</th>
+          <td mat-cell *matCellDef="let element">{{ element.return }}</td>
+        </ng-container>
+
+        <!-- dueDate Column -->
+        <ng-container matColumnDef="dueDate">
+          <th mat-header-cell *matHeaderCellDef>Due Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.dueDate }}</td>
+        </ng-container>
+
+        <!-- dateOfSubmission Column -->
+        <ng-container matColumnDef="dateOfSubmission">
+          <th mat-header-cell *matHeaderCellDef>Date of Submission</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.position }}
+          </td>
+        </ng-container>
+
+        <!-- submissionStatus Column -->
+        <ng-container matColumnDef="submissionStatus">
+          <th mat-header-cell *matHeaderCellDef>Submission Status</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.position }}
+          </td>
+        </ng-container>
+
+        <!-- Links Column -->
+        <ng-container matColumnDef="links">
+          <th mat-header-cell *matHeaderCellDef>Links</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.position }}
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
     </div>
   </div>
 </div>
